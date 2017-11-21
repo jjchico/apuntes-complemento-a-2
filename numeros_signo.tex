@@ -27,7 +27,7 @@
 \title{Representación binaria de números enteros en complemento a 2}
 \author{Jorge Juan Chico}
 \affil{\textit{jjchico@dte.us.es}}
-\affil{Departamento de Tecnología Electrónica. Universidad de Sevilla}
+\affil{Departamento de Tecnología Electrónica.\\Universidad de Sevilla}
 %\date{Octubre, 2016}
 
 \begin{document}
@@ -137,6 +137,15 @@ En este apartado se presentan algunas propiedades básicas de la representación
   \end{proof}
 \end{theorem}
 
+\subsection{Términos útiles}
+
+\begin{description}
+  \item [Bit:] Cifra binaria. Proviene de \emph{BInary digiT}.
+  \item [Palabra binaria:] Conjunto ordenado de $n$ bits.
+  \item [Representación posicional con $n$ bits:] Representación posicional en base 2 con $n$ cifras binarias.
+  \item [Magnitud de una palabra binaria:] Valor entero representado por los bits de la palabra binaria interpretados en notación posicional en base 2.
+\end{description}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Representación en complemento a 2}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,7 +157,7 @@ El interés de la representación en complemento a 2 radica en que simplifica el
 En este apartado se define la representación en complemento a 2 y se introducen sus propiedades básicas.
 
 \begin{definition}[Representación en complemento a 2]\label{def-rep-ca2}
-  Dado $x \in \bbZ$ tal que $-2^{n-1} \le x \le 2^{n-1}-1$, la representación en complemento a 2 de $x$ con $n$ cifras binarias (bits) es una palabra binaria de $n$ bits y de magnitud $RC2_n(x)$ tal que:
+  Dado $x \in \bbZ$ tal que $-2^{n-1} \le x \le 2^{n-1}-1$, la representación en complemento a 2 de $x$ con $n$ bits es una palabra binaria de $n$ bits cuya magnitud, $RC2_n(x)$, es:
   \[
     RC2_n(x) =
       \begin{cases}
