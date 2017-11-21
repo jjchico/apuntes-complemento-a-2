@@ -53,7 +53,7 @@ Vea \url{http://creativecommons.org/licenses/by-sa/4.0/} para más información.
 
 Puede encontrar el código fuente de este documento en:
 
-\url{https://bitbucket.org/jjchicodte/complemento-a-2}.
+\url{https://github.com/jjchico/apuntes-complemento-a-2}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Notación posicional}
@@ -62,79 +62,79 @@ Puede encontrar el código fuente de este documento en:
 En este apartado se presentan algunas propiedades básicas de la representación posicional de números que se usarán en el resto de apartados.
 
 \begin{definition}[Representación en notación posicional]
-   Dado $x \in \bbZ, x \ge 0$, la representanción en notación posicional
-   de $x$ en la base numérica $b \in \bbZ, b > 1$, queda definida por el
-   conjunto de cifras $\{x_{n-1}, x_{n-2}, \ldots, x_1, x_0\}$ con $x_i \in
-   \bbZ, 0 \le x_i < b$, tales que:
-    \[
-        x = x_{n-1} b^{n-1}+x_{n-2} b^{n-2}+ \cdots + x_1 b^1+x_0
-    \]
+ Dado $x \in \bbZ, x \ge 0$, la representanción en notación posicional
+ de $x$ en la base numérica $b \in \bbZ, b > 1$, queda definida por el
+ conjunto de cifras $\{x_{n-1}, x_{n-2}, \ldots, x_1, x_0\}$ con $x_i \in
+ \bbZ, 0 \le x_i < b$, tales que:
+  \[
+    x = x_{n-1} b^{n-1}+x_{n-2} b^{n-2}+ \cdots + x_1 b^1+x_0
+  \]
 \end{definition}
 
 \begin{theorem}\label{theorem-maxn}
-    El mayor número $x \in \bbZ, x \ge 0$, representable con $n$ cifras en la
-    base $b$ es
-    \[
-        x = b^n - 1
-    \]
+  El mayor número $x \in \bbZ, x \ge 0$, representable con $n$ cifras en la
+  base $b$ es
+  \[
+    x = b^n - 1
+  \]
 
-    \begin{proof}
-        Dado que las cifras $x_i$ que forman la representación de $x$ en la
-        base $b$ son todas menores que $b$, el mayor número representable es el
-        que se obtiene cuando todas las cifras tienen su valor máximo $b-1$, por
-        tanto, el mayor número representable con $n$ cifras es:
-        \begin{align*}
-            \sum_{i=0}^{n-1} (b-1)b^i
-            = \sum_{i=0}^{n-1} \left(b^{i+1}-b^i\right)
-            = \sum_{i=0}^{n-1} b^{i+1} - \sum_{i=0}^{n-1} b^i\\
-            = \sum_{i=1}^{n} b^{i} - \sum_{i=0}^{n-1} b^i
-            = b^n + \sum_{i=1}^{n-1} b^{i} - \sum_{i=1}^{n-1} b^i - 1
-            = b^n - 1
-        \end{align*}
-    \end{proof}
+  \begin{proof}
+    Dado que las cifras $x_i$ que forman la representación de $x$ en la
+    base $b$ son todas menores que $b$, el mayor número representable es el
+    que se obtiene cuando todas las cifras tienen su valor máximo $b-1$, por
+    tanto, el mayor número representable con $n$ cifras es:
+    \begin{align*}
+      \sum_{i=0}^{n-1} (b-1)b^i
+      = \sum_{i=0}^{n-1} \left(b^{i+1}-b^i\right)
+      = \sum_{i=0}^{n-1} b^{i+1} - \sum_{i=0}^{n-1} b^i\\
+      = \sum_{i=1}^{n} b^{i} - \sum_{i=0}^{n-1} b^i
+      = b^n + \sum_{i=1}^{n-1} b^{i} - \sum_{i=1}^{n-1} b^i - 1
+      = b^n - 1
+    \end{align*}
+  \end{proof}
 \end{theorem}
 
 \begin{corollary}\label{corollary-pos-digit}
-    Cada unidad de la cifra $i$-ésima de la notación posicional en base $b$
-    tiene un peso mayor al mayor valor representable con el resto de cifras
-    menos significativas.
-    \begin{proof}
-        El peso de cada unidad de la cifra $i$-ésima es $b^i$ y según
-        el Teorema~\ref{theorem-maxn}, el mayor número representable con las
-        $i-1$ cifras menos significativas que la cifra $i$ es $b^i-1$ por lo
-        que queda demostrado el teorema.
-    \end{proof}
+  Cada unidad de la cifra $i$-ésima de la notación posicional en base $b$
+  tiene un peso mayor al mayor valor representable con el resto de cifras
+  menos significativas.
+  \begin{proof}
+    El peso de cada unidad de la cifra $i$-ésima es $b^i$ y según
+    el Teorema~\ref{theorem-maxn}, el mayor número representable con las
+    $i-1$ cifras menos significativas que la cifra $i$ es $b^i-1$ por lo
+    que queda demostrado el teorema.
+  \end{proof}
 \end{corollary}
 
 \begin{theorem}\label{theorem-pos-uniq}
-    Dado $x \in \bbZ, x \ge 0$, la representación posicional de $x$ en
-    la base $b$ es única.
-    \begin{proof}
-        Supongamos que hay dos representaciones distintas de $x$, esto es:
-        \[
-            x = \sum_{i=0}^{n-1} x_i b^i = \sum_{i=0}^{n-1} x'_i b^i
-        \]
-        tal que $x_i \neq x'_i$ para algún $i, 0 \le i \le n-1$. Sea $j$ el
-        mayor índice tal que $x_j \neq x'_j$, por tanto se tiene que:
-        \begin{align*}
-            |x_j-x'_j| \ge 0 \\
-            x = x_j b^j + \sum_{i=0}^{j-1} x_i b^i
-                = \sum_{i=0}^{j-1} x'_i b^i \\
-            x-x = 0 = (x_j-x'_j) b^j + \sum_{i=0}^{j-1} (x_i-x'_i)b^i \\
-            \left| (x_j-x'_j) b^j \right| =
-                \left| \sum_{i=0}^{j-1} (x_i-x'_i)b^i \right|
-        \end{align*}
-        Por lo tanto, se tiene que:
-        \begin{align*}
-            b^j \le \left| (x_j-x'_j) b^j \right|
-                = \left| \sum_{i=0}^{j-1} (x_i-x'_i)b^i \right| \le
-                \sum_{i=0}^{j-1} |(x_i-x'_i)|b^i \\
-                \le \sum_{i=0}^{j-1} (b-1)b^i = b^j - 1
-        \end{align*}
-        lo cual es una contradicción y, por tanto, no existe el mayor índice
-        $j$ tal que $x_j \neq x'_j$ y no existen cifras que sean diferentes en
-        dos representaciones en notación posicional de $x$.
-    \end{proof}
+  Dado $x \in \bbZ, x \ge 0$, la representación posicional de $x$ en
+  la base $b$ es única.
+  \begin{proof}
+    Supongamos que hay dos representaciones distintas de $x$, esto es:
+    \[
+      x = \sum_{i=0}^{n-1} x_i b^i = \sum_{i=0}^{n-1} x'_i b^i
+    \]
+    tal que $x_i \neq x'_i$ para algún $i, 0 \le i \le n-1$. Sea $j$ el
+    mayor índice tal que $x_j \neq x'_j$, por tanto se tiene que:
+    \begin{align*}
+      |x_j-x'_j| \ge 0 \\
+      x = x_j b^j + \sum_{i=0}^{j-1} x_i b^i
+        = \sum_{i=0}^{j-1} x'_i b^i \\
+      x-x = 0 = (x_j-x'_j) b^j + \sum_{i=0}^{j-1} (x_i-x'_i)b^i \\
+      \left| (x_j-x'_j) b^j \right| =
+        \left| \sum_{i=0}^{j-1} (x_i-x'_i)b^i \right|
+    \end{align*}
+    Por lo tanto, se tiene que:
+    \begin{align*}
+      b^j \le \left| (x_j-x'_j) b^j \right|
+        = \left| \sum_{i=0}^{j-1} (x_i-x'_i)b^i \right| \le
+        \sum_{i=0}^{j-1} |(x_i-x'_i)|b^i \\
+        \le \sum_{i=0}^{j-1} (b-1)b^i = b^j - 1
+    \end{align*}
+    lo cual es una contradicción y, por tanto, no existe el mayor índice
+    $j$ tal que $x_j \neq x'_j$ y no existen cifras que sean diferentes en
+    dos representaciones en notación posicional de $x$.
+  \end{proof}
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -148,78 +148,78 @@ El interés de la representación en complemento a 2 radica en que simplifica el
 En este apartado se define la representación en complemento a 2 y se introducen sus propiedades básicas.
 
 \begin{definition}[Representación en complemento a 2]\label{def-rep-ca2}
-    Dado $x \in \bbZ$ tal que $-2^{n-1} \le x \le 2^{n-1}-1$, la representación en complemento a 2 de $x$ con $n$ cifras binarias (bits) es una palabra binaria de $n$ bits y de magnitud $RC2_n(x)$ tal que:
-    \[
-        RC2_n(x) =
-            \begin{cases}
-                x     & \text{si } x \ge 0\\
-                2^n+x & \text{si } x < 0
-            \end{cases}
-    \]
+  Dado $x \in \bbZ$ tal que $-2^{n-1} \le x \le 2^{n-1}-1$, la representación en complemento a 2 de $x$ con $n$ cifras binarias (bits) es una palabra binaria de $n$ bits y de magnitud $RC2_n(x)$ tal que:
+  \[
+    RC2_n(x) =
+      \begin{cases}
+        x     & \text{si } x \ge 0\\
+        2^n+x & \text{si } x < 0
+      \end{cases}
+  \]
 \end{definition}
 
 \begin{definition}\label{def-rep-ca2_rep}
-    Se dice que $x$ es representable en complemento a 2 con $n$ bits si $-2^{n-1} \le x \le 2^{n-1}-1$.
+  Se dice que $x$ es representable en complemento a 2 con $n$ bits si $-2^{n-1} \le x \le 2^{n-1}-1$.
 \end{definition}
 
 \begin{definition}[Complemento a 2 de números enteros]
-    Dado $x \in \bbZ, 0 \le x \le 2^n-1$, se define el complemento a 2 con $n$ bits de $x$, $C2_n(x)$, como:
-    \[
-        C2_n(x) = 2^n - x
-    \]
+  Dado $x \in \bbZ, 0 \le x \le 2^n-1$, se define el complemento a 2 con $n$ bits de $x$, $C2_n(x)$, como:
+  \[
+    C2_n(x) = 2^n - x
+  \]
 \end{definition}
 
 \begin{corollary}
-    La magnitud de la representación en complemento a 2 de $x$ con $n$ bits, $RC2_n(x)$, puede escribirse como:
-    \[
-        RC2_n(x) = \begin{cases}
-            x        & \text{si } x \ge 0\\
-            C2_n(-x) & \text{si } x < 0
-        \end{cases}
-    \]
+  La magnitud de la representación en complemento a 2 de $x$ con $n$ bits, $RC2_n(x)$, puede escribirse como:
+  \[
+    RC2_n(x) = \begin{cases}
+      x        & \text{si } x \ge 0\\
+      C2_n(-x) & \text{si } x < 0
+    \end{cases}
+  \]
 \end{corollary}
 
 \begin{theorem}\label{theorem-sign-bit}
-    Si $x$ es representable en complemento a 2 con $n$ bits, el bit más significativo de la representación en complemento a 2 de $x$ es 0 si $x \ge 0$, y 1 si $x < 0$.
-    \begin{proof}
-        \begin{case}
-            $x \ge 0$.
-            \[RC2_n(x)= x = x_{n-1}2^{n-1}+x_{n-2}2^{n-2}+\cdots+x_0\]
-            Dado que $x$ es representable en complemento a 2, por la definición~\ref{def-rep-ca2_rep} se tiene que $x<2^{n-1}$ y, por el corolario~\ref{corollary-pos-digit}, debe ser $x_{n-1}=0$.
-        \end{case}
-        \begin{case}
-            $x<0$.
-            \[
-                RC2_n(x)= 2^n+x = x_{n-1}2^{n-1}+x_{n-2}2^{n-2}+\cdots+x_0
-            \]
-            Dado que $x$ es representable en complemento a 2, por la definición~\ref{def-rep-ca2_rep} se tiene que
-            \[
-                -2^{n-1} \le x < 0 & \qquad 2^{n-1} \le 2^n + x < 2^n
-            \]
-            y, por el corolario~\ref{corollary-pos-digit}, debe ser $x_{n-1}=1$.
-        \end{case}
-    \end{proof}
+  Si $x$ es representable en complemento a 2 con $n$ bits, el bit más significativo de la representación en complemento a 2 de $x$ es 0 si $x \ge 0$, y 1 si $x < 0$.
+  \begin{proof}
+    \begin{case}
+      $x \ge 0$.
+      \[RC2_n(x)= x = x_{n-1}2^{n-1}+x_{n-2}2^{n-2}+\cdots+x_0\]
+      Dado que $x$ es representable en complemento a 2, por la definición~\ref{def-rep-ca2_rep} se tiene que $x<2^{n-1}$ y, por el corolario~\ref{corollary-pos-digit}, debe ser $x_{n-1}=0$.
+    \end{case}
+    \begin{case}
+      $x<0$.
+      \[
+        RC2_n(x)= 2^n+x = x_{n-1}2^{n-1}+x_{n-2}2^{n-2}+\cdots+x_0
+      \]
+      Dado que $x$ es representable en complemento a 2, por la definición~\ref{def-rep-ca2_rep} se tiene que
+      \[
+        -2^{n-1} \le x < 0  \qquad 2^{n-1} \le 2^n + x < 2^n
+      \]
+      y, por el corolario~\ref{corollary-pos-digit}, debe ser $x_{n-1}=1$.
+    \end{case}
+  \end{proof}
 \end{theorem}
 
 \begin{definition}[Bit de signo en la representación en complemento a 2]
-    Dado $x \in \bbZ$, se denomina \emph{bit de signo} de la representación en complemnto a 2 con $n$ bits de $x$ al bit más significativo de la representación en complemento a 2 con $n$ bits de $x$.
+  Dado $x \in \bbZ$, se denomina \emph{bit de signo} de la representación en complemnto a 2 con $n$ bits de $x$ al bit más significativo de la representación en complemento a 2 con $n$ bits de $x$.
 \end{definition}
 
 \begin{theorem}[Cálculo del Opuesto]
-    Dado $x \in \bbZ$ representable en complemento a 2 con $n$ bits, $x \ne 0$ y $x \ne -2^{n-1}$, la magnitud de la representación en complemento a 2 de $-x$ es el complemento a 2 de la magnitud de la representación en complemento a 2 de $x$, siempre que $-x$ sea representable en complemento a 2. Esto es:
-    \[RC2_n(-x) = C2_n(RC2_n(x))\]
-    En otras palabras, la representación en complemento a 2 de $-x$ puede obtenerse simplemente complementando a 2 la representación en complemento a 2 de $x$.
+  Dado $x \in \bbZ$ representable en complemento a 2 con $n$ bits, $x \ne 0$ y $x \ne -2^{n-1}$, la magnitud de la representación en complemento a 2 de $-x$ es el complemento a 2 de la magnitud de la representación en complemento a 2 de $x$, siempre que $-x$ sea representable en complemento a 2. Esto es:
+  \[RC2_n(-x) = C2_n(RC2_n(x))\]
+  En otras palabras, la representación en complemento a 2 de $-x$ puede obtenerse simplemente complementando a 2 la representación en complemento a 2 de $x$.
 
-    \begin{proof}
-        Si $0<x<2^{n-1}$, se tiene que $RC2_n(x)=x$ y, además:
-        \[
-            RC2_n(-x) = 2^n - x = C2_n(x) = C2_n(RC2_n(x))
-        \]
-        Por otro lado, si $-2^{n-1}<x<0$, se tiene que $RC2_n(x)=2^n+x$ y, además:
-        \[
-            RC2_n(-x) = -x = 2^n - 2^n - x = 2^n - (2^n+x) = C2_n(RC2_n(x))
-        \]
-    \end{proof}
+  \begin{proof}
+    Si $0<x<2^{n-1}$, se tiene que $RC2_n(x)=x$ y, además:
+    \[
+      RC2_n(-x) = 2^n - x = C2_n(x) = C2_n(RC2_n(x))
+    \]
+    Por otro lado, si $-2^{n-1}<x<0$, se tiene que $RC2_n(x)=2^n+x$ y, además:
+    \[
+      RC2_n(-x) = -x = 2^n - 2^n - x = 2^n - (2^n+x) = C2_n(RC2_n(x))
+    \]
+  \end{proof}
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -229,114 +229,114 @@ En este apartado se define la representación en complemento a 2 y se introducen
 La principal ventaja de la representación en complemento a 2 es la facilidad para sumar números usando sus representaciones en complemento a 2. El siguiente teorema recoge la propiedad fundamental de la suma en complemento a 2 y dice, básicamente, que la representación en complemento a 2 de $x+y$ se obtiene sumando directamente las representaciones en complemento a 2 de $x$ y de $y$.
 
 \begin{theorem}[Regla del la suma]\label{theorem-sum-law}
-    Dados $x, y \in \bbZ$ tales que $x$, $y$ y $x+y$ son representables en complemento a 2 con $n$ bits, se cumple que:
-    \[
-        RC2_n(x+y) = [RC2_n(x) + RC2_n(y)] \mod 2^n
-    \]
-    \begin{proof}
-        Distinguimos varios casos:
+  Dados $x, y \in \bbZ$ tales que $x$, $y$ y $x+y$ son representables en complemento a 2 con $n$ bits, se cumple que:
+  \[
+    RC2_n(x+y) = [RC2_n(x) + RC2_n(y)] \mod 2^n
+  \]
+  \begin{proof}
+    Distinguimos varios casos:
 
-        \begin{case}
-            $0 \le x,y$
+    \begin{case}
+      $0 \le x,y$
 
-            Dado que $x$ y $y$ son positivos, por la definición~\ref{def-rep-ca2} se tiene que:
-            \[
-                [RC2_n(x)+RC2_n(y)] \mod 2^n = (x + y) \mod 2^n
-            \]
-            Por otra parte, ya que $x+y$ es necesariamente positivo y representable en complemento a 2, se tiene que $0 \le x + y < 2^{n-1}$ y por tanto:
-            \[
-                [RC2_n(x)+RC2_n(y)] \mod 2^n = x + y = RC2_n(x+y)
-            \]
+      Dado que $x$ y $y$ son positivos, por la definición~\ref{def-rep-ca2} se tiene que:
+      \[
+        [RC2_n(x)+RC2_n(y)] \mod 2^n = (x + y) \mod 2^n
+      \]
+      Por otra parte, ya que $x+y$ es necesariamente positivo y representable en complemento a 2, se tiene que $0 \le x + y < 2^{n-1}$ y por tanto:
+      \[
+        [RC2_n(x)+RC2_n(y)] \mod 2^n = x + y = RC2_n(x+y)
+      \]
 
-            \begin{case}
-                $x \ge 0; y < 0; x+y \ge 0$
-            \end{case}
+      \begin{case}
+        $x \ge 0; y < 0; x+y \ge 0$
+      \end{case}
 
-            \[
-                [RC2_n(x)+RC2_n(y)] \mod 2^n = (x + 2^n + y) \mod 2^n
-            \]
-            Dado que $x+y \ge 0$, se tiene que:
-            \[
-                [RC2_n(x)+RC2_n(y)] \mod 2^n = (x + y) = RC2_n(x+y)
-            \]
-        \end{case}
-        \begin{case}
-            $a \ge 0; b < 0; x+y < 0$
+      \[
+        [RC2_n(x)+RC2_n(y)] \mod 2^n = (x + 2^n + y) \mod 2^n
+      \]
+      Dado que $x+y \ge 0$, se tiene que:
+      \[
+        [RC2_n(x)+RC2_n(y)] \mod 2^n = (x + y) = RC2_n(x+y)
+      \]
+    \end{case}
+    \begin{case}
+      $a \ge 0; b < 0; x+y < 0$
 
-            \[
-                [RC2_n(x)+RC2_n(y)] \mod 2^n = (x + 2^n + y) \mod 2^n
-            \]
-            Dado que $x+y < 0$, se tiene que:
-            \[
-                [RC2_n(x)+RC2_n(y)] \mod 2^n = 2^n + x + y = RC2_n(x + y)
-            \]
-        \end{case}
+      \[
+        [RC2_n(x)+RC2_n(y)] \mod 2^n = (x + 2^n + y) \mod 2^n
+      \]
+      Dado que $x+y < 0$, se tiene que:
+      \[
+        [RC2_n(x)+RC2_n(y)] \mod 2^n = 2^n + x + y = RC2_n(x + y)
+      \]
+    \end{case}
 
-        \begin{case}
-            $x < 0; y < 0$
+    \begin{case}
+      $x < 0; y < 0$
 
-            \[
-                [RC2_n(x)+RC2_n(y)] \mod 2^n = (2^n + x + 2^n + y) \mod 2^n
-            \]
+      \[
+        [RC2_n(x)+RC2_n(y)] \mod 2^n = (2^n + x + 2^n + y) \mod 2^n
+      \]
 
-            Dado que tanto $x$ como $y$ son representables en complemento a 2
-            se tiene que $-2^{n-1} < x+y < 0$, por tanto, $-2^n < x+y < 0$
-            y $0 < 2^n + x + y < 2^n$, luego:
-            \[
-                [RC2_n(x)+RC2_n(y)] \mod 2^n = 2^n + x + y = RC2_n(x + y)
-            \]
-        \end{case}
-    \end{proof}
+      Dado que tanto $x$ como $y$ son representables en complemento a 2
+      se tiene que $-2^{n-1} < x+y < 0$, por tanto, $-2^n < x+y < 0$
+      y $0 < 2^n + x + y < 2^n$, luego:
+      \[
+        [RC2_n(x)+RC2_n(y)] \mod 2^n = 2^n + x + y = RC2_n(x + y)
+      \]
+    \end{case}
+  \end{proof}
 \end{theorem}
 
 \begin{definition}[Desbordamiento en complemento a 2]
-    Dados $x, y \in \bbZ$ representables en complemento a 2 con $n$ bits, se dice que la suma en complemento a 2 con $n$ bits de $x$ y $y$ produce desbordamiento si $x+y$ no es representable en complemento a 2 con $n$ bits.
+  Dados $x, y \in \bbZ$ representables en complemento a 2 con $n$ bits, se dice que la suma en complemento a 2 con $n$ bits de $x$ y $y$ produce desbordamiento si $x+y$ no es representable en complemento a 2 con $n$ bits.
 \end{definition}
 
 \begin{theorem}[Regla del desbordamiento]\label{theorem-overflow-law}
-    Dados $x, y \in \bbZ$ representables en complemento a 2 con $n$ bits, la suma $x+y$ produce desbordamiento si y sólo si los bits de signo de las representaciones en complemento a 2 de $x$ y $y$ coinciden, pero difieren del bit más significativo de $s = [RC2_n(x)+RC2_n(y)] \mod 2^n$.
-    \begin{proof}
-        Distinguimos varios casos:
+  Dados $x, y \in \bbZ$ representables en complemento a 2 con $n$ bits, la suma $x+y$ produce desbordamiento si y sólo si los bits de signo de las representaciones en complemento a 2 de $x$ y $y$ coinciden, pero difieren del bit más significativo de $s = [RC2_n(x)+RC2_n(y)] \mod 2^n$.
+  \begin{proof}
+    Distinguimos varios casos:
 
-        \begin{case}
-            $0 \le x,y$
+    \begin{case}
+      $0 \le x,y$
 
-            En este caso, $x$ y $y$ tienen idénticos bits de signo e iguales a $0$. Dado que $x$ y $y$ son positivos y representables en complemento a 2, se tiene que $0 \le x+y < 2^n$ y $s = (x + y)$.
+      En este caso, $x$ y $y$ tienen idénticos bits de signo e iguales a $0$. Dado que $x$ y $y$ son positivos y representables en complemento a 2, se tiene que $0 \le x+y < 2^n$ y $s = (x + y)$.
 
-            Si $x+y < 2^{n-1}$, $x+y$ es representable en complemento a 2 con $n$ bits, su bit más significativo es $0$ y coincide con los bits de signo de $x$ y $y$.
+      Si $x+y < 2^{n-1}$, $x+y$ es representable en complemento a 2 con $n$ bits, su bit más significativo es $0$ y coincide con los bits de signo de $x$ y $y$.
 
-            Por otra parte, si $2^{n-1} \le x+y < 2^n$, $x+y$ no es representable en complemento a 2 con $n$ bits, su bit más significativo es $1$ y no coincide con los bits de signo de $x$ y $y$.
-        \end{case}
+      Por otra parte, si $2^{n-1} \le x+y < 2^n$, $x+y$ no es representable en complemento a 2 con $n$ bits, su bit más significativo es $1$ y no coincide con los bits de signo de $x$ y $y$.
+    \end{case}
 
-        \begin{case}
-            $x \ge 0; y < 0$
+    \begin{case}
+      $x \ge 0; y < 0$
 
-            Este caso es equivalente al caso en que $y \ge 0; x < 0$ el cual tiene una demostración equivalente.
+      Este caso es equivalente al caso en que $y \ge 0; x < 0$ el cual tiene una demostración equivalente.
 
-            En este caso, $x$ y $y$ tienen distintos bits de signo. Dado que $x$ e $y$ son representables en complemento a 2 con $n$ bits, se tiene que $0 \le x < 2^{n-1}$ y $2^{n-1} \le y < 0$, por tanto:
+      En este caso, $x$ y $y$ tienen distintos bits de signo. Dado que $x$ e $y$ son representables en complemento a 2 con $n$ bits, se tiene que $0 \le x < 2^{n-1}$ y $2^{n-1} \le y < 0$, por tanto:
 
-            \[
-                2^{n-1} \le x + y < 2^{n-1}
-            \]
+      \[
+        2^{n-1} \le x + y < 2^{n-1}
+      \]
 
-            Luego $x+y$ es representable en complemento a 2 con $n$ bits y la suma de $x$ e $y$ no produce desbordamiento.
-        \end{case}
+      Luego $x+y$ es representable en complemento a 2 con $n$ bits y la suma de $x$ e $y$ no produce desbordamiento.
+    \end{case}
 
-        \begin{case}
-            $x < 0; y < 0$
+    \begin{case}
+      $x < 0; y < 0$
 
-            En este caso, $x$ e $y$ tienen idénticos bits de signo e iguales a $1$. Dado que $x$ e $y$ son negativos y representables en complemento a 2, se tiene que $s = (2^n + x + 2^n + y) \mod 2^n$ y $-2^n \le x+y < 0$. Por tanto:
-            \begin{align*}
-                2^n + 2^n - 2^n-1 \le 2^n + 2^n + x + y < 2^n + 2^n\\
-                2^n \le 2^n + 2^n + x + y < 2^n + 2^n\\
-                s = (2^n + 2^n + x + y) \mod 2^n = 2^n + x + y
-            \end{align*}
+      En este caso, $x$ e $y$ tienen idénticos bits de signo e iguales a $1$. Dado que $x$ e $y$ son negativos y representables en complemento a 2, se tiene que $s = (2^n + x + 2^n + y) \mod 2^n$ y $-2^n \le x+y < 0$. Por tanto:
+      \begin{align*}
+        2^n + 2^n - 2^n-1 \le 2^n + 2^n + x + y < 2^n + 2^n\\
+        2^n \le 2^n + 2^n + x + y < 2^n + 2^n\\
+        s = (2^n + 2^n + x + y) \mod 2^n = 2^n + x + y
+      \end{align*}
 
-            Si $-2^{n-1} \le x+y < 0$, $x+y$ es representable en complemento a 2 con $n$ bits y se tiene que $2^{n-1} \le s < 2^n$ y por tanto el bit más significativo de $s$ es $1$ y coincide con los bits de signo de $x$ e $y$.
+      Si $-2^{n-1} \le x+y < 0$, $x+y$ es representable en complemento a 2 con $n$ bits y se tiene que $2^{n-1} \le s < 2^n$ y por tanto el bit más significativo de $s$ es $1$ y coincide con los bits de signo de $x$ e $y$.
 
-            Por otra parte, si $-2^n \le x+y < -2^{n-1}$, $x+y$ no es representable en complemento a 2 con $n$ bits y se tiene que $0 \le s < 2^{n-1}$ y por tanto el bit más significativo de $s$ es $0$ y no coincide con los bits de signo de $x$ y $y$.
-        \end{case}
-    \end{proof}
+      Por otra parte, si $-2^n \le x+y < -2^{n-1}$, $x+y$ no es representable en complemento a 2 con $n$ bits y se tiene que $0 \le s < 2^{n-1}$ y por tanto el bit más significativo de $s$ es $0$ y no coincide con los bits de signo de $x$ y $y$.
+    \end{case}
+  \end{proof}
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -346,39 +346,39 @@ La principal ventaja de la representación en complemento a 2 es la facilidad pa
 Las propiedades de la suma en complemento a 2 tienen su principal aplicación a la hora de diseñar circuitos electrónicos sumadores. Gracias a las propiedades de la suma en complemento a 2, el diseño de estos circuitos se simplifica de forma notable. A continuación se presentan las definiciones y propiedades relacionadas con la suma en complemento a 2 aplicadas a los sumadores de magnitudes.
 
 \begin{definition}[Sumador de magnitudes]
-    Un sumador de magnitudes de $n$ bits es un sistema con dos entradas de $n$ bits que codifican las magnitudes $x$ e $y$ en base 2, y una saliza $z$ de $n$ bits que codifica en base 2 el resultado de sumar las magnitudes de las entradas de forma que:
-    \[
-        z = (x + y) \mod 2^n
-    \]
+  Un sumador de magnitudes de $n$ bits es un sistema con dos entradas de $n$ bits que codifican las magnitudes $x$ e $y$ en base 2, y una saliza $z$ de $n$ bits que codifica en base 2 el resultado de sumar las magnitudes de las entradas de forma que:
+  \[
+    z = (x + y) \mod 2^n
+  \]
 \end{definition}
 
 El siguiente corolario es una aplicación directa de la regla de la suma en complemento a 2 a sumadores de magnitudes. De esta forma, es posible usar dicho sumador, inicialmente diseñado para números positivos, para sumar número positivos y negativos sin más que usar sus representaciones en complemento a 2.
 
 \begin{corollary}
-    Un sumador de magnitudes de $n$ bits cuyos operandos son las representaciones en complemento a 2 con $n$ bits de $x, y \in \bbZ$, produce la representación en complemento a 2 con $n$ bits de $x+y$, siempre que $x+y$ sea representable en complemento a 2 con $n$ bits.
-    \begin{proof}
-        Si al sumador de magnitudes se le suministran en sus entradas las representaciones en complemento a 2 de $x$ e $y$, el sumador proporcionará una salida igual a:
-        \[
-            z = [RC2_n(x)+RC2_n(y)] \mod 2^n
-        \]
-        Si $x+y$ es una cantidad representable en complemento a 2, por el teorema~\ref{theorem-sum-law} se tiene que:
-        \[
-            z = RC2_n(x + y)
-        \]
-    \end{proof}
+  Un sumador de magnitudes de $n$ bits cuyos operandos son las representaciones en complemento a 2 con $n$ bits de $x, y \in \bbZ$, produce la representación en complemento a 2 con $n$ bits de $x+y$, siempre que $x+y$ sea representable en complemento a 2 con $n$ bits.
+  \begin{proof}
+    Si al sumador de magnitudes se le suministran en sus entradas las representaciones en complemento a 2 de $x$ e $y$, el sumador proporcionará una salida igual a:
+    \[
+      z = [RC2_n(x)+RC2_n(y)] \mod 2^n
+    \]
+    Si $x+y$ es una cantidad representable en complemento a 2, por el teorema~\ref{theorem-sum-law} se tiene que:
+    \[
+      z = RC2_n(x + y)
+    \]
+  \end{proof}
 \end{corollary}
 
 El siguiente corolario introduce un método práctico para detectar cuando una operación de suma en complemento a 2 realizada mediante un sumador de magnitudes produce desbordamiento. A partir de este resultado de puede llegar de forma sencilla a una implementación práctica de un circuito que detecte esta condición de desbordamiento.
 
 \begin{corollary}
-    Las suma de las representaciones en complemento a 2 de dos números $x, y \in \bbZ$ de $n$ bits realizada por un sumador de magnitudes de $n$ bits produce desbordamiento si y sólo si los bits de signo de $x$ e $y$ coinciden pero son diferentes del bit más significativo proporcionado por la salida del sumador.
-    \begin{proof}
-        Teniendo en cuenta que la salida $z$ del sumador es:
-        \[
-            z = [RC2_n(x)+RC2_n(y)] \mod 2^n
-        \]
-        este corolario es una mera expresión alternativa del teorema~\ref{theorem-overflow-law}.
-    \end{proof}
+  Las suma de las representaciones en complemento a 2 de dos números $x, y \in \bbZ$ de $n$ bits realizada por un sumador de magnitudes de $n$ bits produce desbordamiento si y sólo si los bits de signo de $x$ e $y$ coinciden pero son diferentes del bit más significativo proporcionado por la salida del sumador.
+  \begin{proof}
+    Teniendo en cuenta que la salida $z$ del sumador es:
+    \[
+      z = [RC2_n(x)+RC2_n(y)] \mod 2^n
+    \]
+    este corolario es una mera expresión alternativa del teorema~\ref{theorem-overflow-law}.
+  \end{proof}
 \end{corollary}
 
 %% TODO: Detección del desbordamiento mediante acarreos. Sería necesario introducir el concepto de acarreo, probablemente en un apartado breve sobre aritmética binaria.
@@ -390,44 +390,44 @@ El siguiente corolario introduce un método práctico para detectar cuando una o
 El complemento a 1 de números enteros es una operación similar al complemento a 2. A partir de esta operación es posible definir una representación en complemento a 1 con características y propiedades similares a la representación en complemento a 2. En este documento se introduce la la operación del complemento a 1 sólo como una herramienta práctica para la obtención de métodos sencillos para obtener el complemento a 2 de un número entero de forma directa a partir de su representación en base 2.
 
 \begin{definition}[Complemento a 1 de números enteros]\label{def-c1}
-    Dado $x \in \bbZ, 0 \le x \le 2^n-1$, se define el complemento a 1 con $n$ bits de $x$, $C1_n(x)$, a la magnitud que se obtiene de sustituir todas las cifras a uno por cero y todas las cifras a cero por uno en la representación de $x$ en notación posicional en base 2 con $n$ cifras.
+  Dado $x \in \bbZ, 0 \le x \le 2^n-1$, se define el complemento a 1 con $n$ bits de $x$, $C1_n(x)$, a la magnitud que se obtiene de sustituir todas las cifras a uno por cero y todas las cifras a cero por uno en la representación de $x$ en notación posicional en base 2 con $n$ cifras.
 \end{definition}
 
 El siguinte teorema permite calcular el complemento a 1 de un número de forma algebraica, sin necesidad de operar con números en base 2.
 
 \begin{proposition}
-    Dado $x \in \bbZ, 0 \le x \le 2^n-1$, se tiene que:
-    \[
+  Dado $x \in \bbZ, 0 \le x \le 2^n-1$, se tiene que:
+  \[
+    C1_n(x) = 2^n - x - 1
+  \]
+  \begin{proof}
+    Dado que $C1_n(x)$ se obtiene de complementar todas las cifras de $x$ escrito en base 2, es fácil ver que $x+C1_n(x)$ efectuada en base 2 tiene como resultado un número de $n$ cifras todas a uno, que es el mayor número representable en base 2 con $n$ cifras, por tanto:
+    \begin{align*}
+        x + C1_n(x) = 2^n - 1\\
         C1_n(x) = 2^n - x - 1
-    \]
-    \begin{proof}
-        Dado que $C1_n(x)$ se obtiene de complementar todas las cifras de $x$ escrito en base 2, es fácil ver que $x+C1_n(x)$ efectuada en base 2 tiene como resultado un número de $n$ cifras todas a uno, que es el mayor número representable en base 2 con $n$ cifras, por tanto:
-        \begin{align*}
-            x + C1_n(x) = 2^n - 1\\
-            C1_n(x) = 2^n - x - 1
-        \end{align*}
-    \end{proof}
+    \end{align*}
+  \end{proof}
 \end{proposition}
 
 El siguiente corolario se obtiene directamente de la definición de complemento a 2 y proporciona un métod para el cálculo rápido del complemento a 2 en binario.
 
 \begin{corollary}[Relación entre el complemento a 1 y el complemento a 2]\label{c1-c2-relation}
-    Dado $x \in \bbZ, 0 \le x \le 2^n-1$, se tiene que:
-    \begin{align*}
-        C1_n(x) = C2_n(x) - 1\\
-        C2_n(x) = C1_n(x) + 1
-    \end{align*}
+  Dado $x \in \bbZ, 0 \le x \le 2^n-1$, se tiene que:
+  \begin{align*}
+    C1_n(x) = C2_n(x) - 1\\
+    C2_n(x) = C1_n(x) + 1
+  \end{align*}
 \end{corollary}
 
 La siguiente proposición proporciona un método aun más rápido para obtener el complemento a 2 de un número.
 
 \begin{proposition}
-    Dado $x \in \bbZ, 0 \le x$ expresado en base 2, el complemento a 2 con $n$ bits de $x$ puede obtenerse con el siguiente procedimiento: comenzando por el bit menos significativo y avanzando hacia el más significativo, se copian todos los bits que sean cero hasta llegar al primer bit a uno. Se copia este primer bit a uno y a continuación se copian el resto de bits complementados.
-    \begin{proof}
-        La demostración de esta proposición se basa en el corolario~\ref{c1-c2-relation}. La operación $C1_n(x)+1$ transformará en 0 todos los bits a 1 de $C1_n(x)$ que se encuentren ajustados a la derecha y de forma consecutiva, mediante la propagación de acarreos consecutivos. Las sucesivas operaciones de acarreo se detienen al llegar al primer 0, que se transformará en 1 debido al acarreo. El resto de los bits de $C1_n(x)+1$ permancerán inalterados por la operación de suma al no existir acarreo que propagar. De esta forma, obtener el $C1_n(x)+1$ a partir del $C1_n(x)$ consiste en complementar todos los bits 1 de $C1_n(x)$ comenzando por la derecha (bit menos siginificativo) hasta llegar al primer 0, que también se complementa, dejando el resto de bits inalterados.
+  Dado $x \in \bbZ, 0 \le x$ expresado en base 2, el complemento a 2 con $n$ bits de $x$ puede obtenerse con el siguiente procedimiento: comenzando por el bit menos significativo y avanzando hacia el más significativo, se copian todos los bits que sean cero hasta llegar al primer bit a uno. Se copia este primer bit a uno y a continuación se copian el resto de bits complementados.
+  \begin{proof}
+    La demostración de esta proposición se basa en el corolario~\ref{c1-c2-relation}. La operación $C1_n(x)+1$ transformará en 0 todos los bits a 1 de $C1_n(x)$ que se encuentren ajustados a la derecha y de forma consecutiva, mediante la propagación de acarreos consecutivos. Las sucesivas operaciones de acarreo se detienen al llegar al primer 0, que se transformará en 1 debido al acarreo. El resto de los bits de $C1_n(x)+1$ permancerán inalterados por la operación de suma al no existir acarreo que propagar. De esta forma, obtener el $C1_n(x)+1$ a partir del $C1_n(x)$ consiste en complementar todos los bits 1 de $C1_n(x)$ comenzando por la derecha (bit menos siginificativo) hasta llegar al primer 0, que también se complementa, dejando el resto de bits inalterados.
 
-        Pero si tenemos en cuenta la definición~\ref{def-c1}, podemos llegar al mismo resultado para obtener el $C1_n(x)+1$ y, por tanto, el $C2_n(x)$ haciendo una transformación similar sobre los bits de $x$ teniendo en cuenta que cada bit de $x$ es el complemento del correspondiente bit de $C1_n(x)$. Esto es, en vez de complementar los bits a 1 empezando por la derecha hasta el primer 0 (inclusive), se dejan sin alterar los bits a 0 por la derecha hasta el primer 1 (inclusive), y en vez de dejar sin alterar el resto de bits, se complementan todos los bits restantes.
-    \end{proof}
+    Pero si tenemos en cuenta la definición~\ref{def-c1}, podemos llegar al mismo resultado para obtener el $C1_n(x)+1$ y, por tanto, el $C2_n(x)$ haciendo una transformación similar sobre los bits de $x$ teniendo en cuenta que cada bit de $x$ es el complemento del correspondiente bit de $C1_n(x)$. Esto es, en vez de complementar los bits a 1 empezando por la derecha hasta el primer 0 (inclusive), se dejan sin alterar los bits a 0 por la derecha hasta el primer 1 (inclusive), y en vez de dejar sin alterar el resto de bits, se complementan todos los bits restantes.
+  \end{proof}
 \end{proposition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -439,47 +439,47 @@ Una operación frecuente en la represención binaria de números es tener que au
 El siguiente teorema nos dice que la representación en complemento a 2 de $x$ con $n+1$ bits se obtiene añadiendo un nuevo bit de signo igual al de la representación en complemento a 2 con $n$ bits de $x$.
 
 \begin{theorem}[Extensión del signo en complemento a 2]
-    Dado $x \in \bbZ$ representable en complemento a 2 con $n$ bits, $RC2_n(x)$ la reprsentanción en complemento a 2 de $x$ y $s$ el bit de signo de $x$, se cumple que:
-    \[
+  Dado $x \in \bbZ$ representable en complemento a 2 con $n$ bits, $RC2_n(x)$ la reprsentanción en complemento a 2 de $x$ y $s$ el bit de signo de $x$, se cumple que:
+  \[
+      RC2_{n+1}(x) = s 2^n + RC2_n(x)
+  \]
+  \begin{proof}
+      Distinguiremos dos casos:
+    \begin{case}
+      $0 \le x < 2^{n-1}$
+
+      Dado que $0 \le x < 2^{n-1}$ se cumple también que $0 \le x < 2^n$ por lo que $x$ es representable complemento a 2 con $n+1$ bits. Por la definición~\ref{def-rep-ca2} se tiene que:
+      \[
+        RC2_{n+1}(x) = RC2_n(x) = x
+      \]
+
+      Y dado que $x \ge 0$, por el teorema~\ref{theorem-sign-bit} el bit de signo de la $RC2_n(x)$ es $s=0$, por tanto:
+      \[
         RC2_{n+1}(x) = s 2^n + RC2_n(x)
-    \]
-    \begin{proof}
-        Distinguiremos dos casos:
-        \begin{case}
-            $0 \le x < 2^{n-1}$
+      \]
+    \end{case}
+    \begin{case}
+      $-2^{n-1} \le x < 0$
 
-            Dado que $0 \le x < 2^{n-1}$ se cumple también que $0 \le x < 2^n$ por lo que $x$ es representable complemento a 2 con $n+1$ bits. Por la definición~\ref{def-rep-ca2} se tiene que:
-            \[
-                RC2_{n+1}(x) = RC2_n(x) = x
-            \]
-
-            Y dado que $x \ge 0$, por el teorema~\ref{theorem-sign-bit} el bit de signo de la $RC2_n(x)$ es $s=0$, por tanto:
-            \[
-                RC2_{n+1}(x) = s 2^n + RC2_n(x)
-            \]
-        \end{case}
-        \begin{case}
-            $-2^{n-1} \le x < 0$
-
-            Dado que $-2^{n-1} \le x < 0$ se cumple también que $-2^n \le x < 0$ por lo que $x$ es representable complemento a 2 con $n+1$ bits. Por la definición~\ref{def-rep-ca2} se tiene que:
-            \[
-                RC2_{n+1}(x) = 2^{n+1} + x = 2^n + 2^n + x\\
-                RC2_n(x) = 2^n + x
-            \]
-            Luego:
-            \[
-                RC2_{n+1}(x) = 2^n + RC2_n(x)
-            \]
-            Y dado que $x < 0$, por el teorema~\ref{theorem-sign-bit} el bit de signo de la $RC2_n(x)$ es $s=1$, por tanto:
-            \[
-                RC2_{n+1}(x) = s 2^n + RC2_n(x)
-            \]
-        \end{case}
-    \end{proof}
+      Dado que $-2^{n-1} \le x < 0$ se cumple también que $-2^n \le x < 0$ por lo que $x$ es representable complemento a 2 con $n+1$ bits. Por la definición~\ref{def-rep-ca2} se tiene que:
+      \[
+        RC2_{n+1}(x) = 2^{n+1} + x = 2^n + 2^n + x\\
+        RC2_n(x) = 2^n + x
+      \]
+      Luego:
+      \[
+        RC2_{n+1}(x) = 2^n + RC2_n(x)
+      \]
+      Y dado que $x < 0$, por el teorema~\ref{theorem-sign-bit} el bit de signo de la $RC2_n(x)$ es $s=1$, por tanto:
+      \[
+        RC2_{n+1}(x) = s 2^n + RC2_n(x)
+      \]
+    \end{case}
+  \end{proof}
 \end{theorem}
 
 \begin{corollary}
-    Dado $x \in \bbZ$ representable en complemento a 2 con n bits, $x$ será representable en complemento a 2 con $n-1$ bits si los dos bits más significativos de la representación en complemento a 2 de $x$ con $n$ bits escrita en base 2 son iguales, esto es, si el bit de signo no cambia al reducir en uno el número de bits de la representación.
+  Dado $x \in \bbZ$ representable en complemento a 2 con n bits, $x$ será representable en complemento a 2 con $n-1$ bits si los dos bits más significativos de la representación en complemento a 2 de $x$ con $n$ bits escrita en base 2 son iguales, esto es, si el bit de signo no cambia al reducir en uno el número de bits de la representación.
 \end{corollary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -491,38 +491,38 @@ El siguiente resultado es de gran interés porque demuestra que la representaci�
 El siguiente teorema también proporciona un mecanismo práctico para trabajar con representaciones en complemento a 2 (convertir un número a su representación y viceversa) si tener que pasar por las operaciones de complemento de números enteros.
 
 \begin{theorem}[Representación en complemento a 2 como código pesado]
-    Dado $x \in \bbZ$ representable en complemento a 2 con $n$ bits y $RC2_n(x)$ la magnitud de la reprsentanción en complemento a 2 de $x$ con $n$ bits formada por las cifras binarias $\{x_{n-1}, x_{n-2}, \ldots, x_1, x_0\}$, se tiene que:
-    \[
+  Dado $x \in \bbZ$ representable en complemento a 2 con $n$ bits y $RC2_n(x)$ la magnitud de la reprsentanción en complemento a 2 de $x$ con $n$ bits formada por las cifras binarias $\{x_{n-1}, x_{n-2}, \ldots, x_1, x_0\}$, se tiene que:
+  \[
+      x = x_{n-1} (-2^{n-1})+x_{n-2} 2^{n-2}+ \cdots + x_1 2^1+x_0
+  \]
+  \begin{proof}
+    Distinguimos los casos en que $x$ sea positivo (o cero) y $x$ negativo.
+
+    \begin{case}
+      $0 \le x < 2^{n-1}$
+
+      Según la definición~\ref{def-rep-ca2} se tiene que $RC2_n(x) = x$. Por el teorema~\ref{theorem-sign-bit}, $x_{n-1}$ es el bit de signo de $x$ y es cero, por tanto se cumple que:
+      \begin{align*}
+        x = x_{n-2} 2^{n-2}+ \cdots + x_1 2^1+x_0\\
         x = x_{n-1} (-2^{n-1})+x_{n-2} 2^{n-2}+ \cdots + x_1 2^1+x_0
-    \]
-    \begin{proof}
-        Distinguimos los casos en que $x$ sea positivo (o cero) y $x$ negativo.
+      \end{align*}
+    \end{case}
+    \begin{case}
+      $-2^{n-1} \le x < 0$
 
-        \begin{case}
-            $0 \le x < 2^{n-1}$
-
-            Según la definición~\ref{def-rep-ca2} se tiene que $RC2_n(x) = x$. Por el teorema~\ref{theorem-sign-bit}, $x_{n-1}$ es el bit de signo de $x$ y es cero, por tanto se cumple que:
-            \begin{align*}
-                x = x_{n-2} 2^{n-2}+ \cdots + x_1 2^1+x_0\\
-                x = x_{n-1} (-2^{n-1})+x_{n-2} 2^{n-2}+ \cdots + x_1 2^1+x_0
-            \end{align*}
-        \end{case}
-        \begin{case}
-            $-2^{n-1} \le x < 0$
-
-            Según la definición~\ref{def-rep-ca2} se tiene que $RC2_n(x) = 2^n + x$. Por el teorema~\ref{theorem-sign-bit}, $x_{n-1}$ es el bit de signo de $x$ y es uno. Si la $RC2_n(x)$ es:
-            \[
-                RC2_n(x) = 2^n + x = 2^{n-1}+x_{n-2}2^{n-2}+\cdots+x_1 2^1+x_0
-            \]
-            Despejando $x$:
-            \[
-                x = 2^{n-1}-2^n + x_{n-2} 2^{n-2}+ \cdots +x_1 2^1+x_0
-            \]
-            Teniendo en cuenta que $2^{n-1}-2^n = -2^{n-1}$ y que $x_{n-1}=1$, se tiene que:
-            \[
-                x = x_{n-1} (-2^{n-1})+x_{n-2} 2^{n-2}+ \cdots + x_1 2^1+x_0
-            \]
-        \end{case}
-    \end{proof}
+      Según la definición~\ref{def-rep-ca2} se tiene que $RC2_n(x) = 2^n + x$. Por el teorema~\ref{theorem-sign-bit}, $x_{n-1}$ es el bit de signo de $x$ y es uno. Si la $RC2_n(x)$ es:
+      \[
+        RC2_n(x) = 2^n + x = 2^{n-1}+x_{n-2}2^{n-2}+\cdots+x_1 2^1+x_0
+      \]
+      Despejando $x$:
+      \[
+        x = 2^{n-1}-2^n + x_{n-2} 2^{n-2}+ \cdots +x_1 2^1+x_0
+      \]
+      Teniendo en cuenta que $2^{n-1}-2^n = -2^{n-1}$ y que $x_{n-1}=1$, se tiene que:
+      \[
+        x = x_{n-1} (-2^{n-1})+x_{n-2} 2^{n-2}+ \cdots + x_1 2^1+x_0
+      \]
+    \end{case}
+  \end{proof}
 \end{theorem}
 \end{document}
