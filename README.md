@@ -1,5 +1,7 @@
 # Representación binaria de números enteros en complemento a 2 #
 
+**Repositorio trasladado a: https://gitlab.com/jjchico/apuntes-complemento-a-2**
+
 Este documento contiene un conjunto de propiedades útiles para la representación binaria de números enteros en complemento a 2. El documento se centra en las propiedades y sus demostraciones con breves notas sobre sus aplicaciones y/o utilidad.
 
 La intención de este documento es servir como material complementario en cursos que incluyan la representación en complemento a 2 en sus contenidos.
